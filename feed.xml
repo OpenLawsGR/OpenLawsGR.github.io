@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenLaws</title>
+    <description>A Project Opening Greek Legislation to Citizens</description>
+    <link>http://www.openlaws.grhttp://www.openlaws.gr/</link>
+    <atom:link href="http://www.openlaws.grhttp://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Hello World!</title>
+        <description>&lt;p&gt;As in most countries, in Greece laws are published as documents usually containing many references to other legal documents and often verbally describing modifications to existing laws. Assembling all pieces in order to find the valid version of a law at a given moment is a tedious task, requiring increased cognitive load. Commercial databases that codify legislation are available, however there is not such a free service for citizens, not even for public bodies. Sometimes, one may find codified laws in public organizations or other bodies (e.g. communities) websites, however their update with the last changes depends on each website manager.&lt;/p&gt;
+
+&lt;p&gt;As legal language usually follows quite formal patterns, natural language processing techniques can be used for the automatic consolidation of Greek law documents and their publishing through version control systems, which allow the tracking of different text versions. &lt;/p&gt;
+
+&lt;h3 id=&quot;our-effort&quot;&gt;Our effort&lt;/h3&gt;
+
+&lt;p&gt;We will use this blog to post updates on our work towards the above described direction. We are trying to create software that will automatically identify law modifications and apply them on the original law texts. Upon success, we will use Github for law version tracking.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Jun 2015 03:37:19 +0300</pubDate>
+        <link>http://www.openlaws.grhttp://www.openlaws.gr/general/2015/06/17/hello-world/</link>
+        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/general/2015/06/17/hello-world/</guid>
+      </item>
+    
+  </channel>
+</rss>
