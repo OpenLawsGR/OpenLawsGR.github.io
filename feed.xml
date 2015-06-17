@@ -7,6 +7,27 @@
     <atom:link href="http://www.openlaws.grhttp://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Short Anatomy of a Greek Law</title>
+        <description>&lt;p&gt;Greek laws are published by the &lt;a href=&quot;http://www.et.gr&quot;&gt;National Printing Service&lt;/a&gt; as texts contained in issues of the Journal of the Greek Government. These issues are actually pdf files.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://www.openlaws.gr/images/lawgr.png&quot; alt=&quot;Greek law texts example&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Law texts within an issue contain references to parts (e.g. articles, paragraphs etc.) of other issues. The reader should manage these references by himself as there are no links leading to the referenced content: search and download the appropriate pdf files and scan them to locate the content.&lt;/p&gt;
+
+&lt;p&gt;Law modifications (additions, deletions, insertions, updates) are verbally described. For example consider the following phrase from a Greek law:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Article 19 of law 3429/2005 (issue 314 A) is substituted as follows: &amp;ldquo;&amp;hellip;&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In such a case, the reader should find the text of law 3429/2005, locate article 19 and substitute its content with the new one. Usually, such modifications of a law&amp;rsquo;s text reside in many different issues, while it is possible that the same part of a law is modified several times through its lifecycle&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Jun 2015 19:55:00 +0300</pubDate>
+        <link>http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</link>
+        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</guid>
+      </item>
+    
+      <item>
         <title>Hello World!</title>
         <description>&lt;p&gt;As in most countries, in Greece laws are published as documents usually containing many references to other legal documents and often verbally describing modifications to existing laws. Assembling all pieces in order to find the valid version of a law at a given moment is a tedious task, requiring increased cognitive load. Commercial databases that codify legislation are available, however there is not such a free service for citizens, not even for public bodies. Sometimes, one may find codified laws in public organizations or other bodies (e.g. communities) websites, however their update with the last changes depends on each website manager.&lt;/p&gt;
 
