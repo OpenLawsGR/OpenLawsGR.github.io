@@ -7,7 +7,7 @@
     <atom:link href="http://www.openlaws.grhttp://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Scrapying greek laws from SuperCl@rity</title>
+        <title>Scrapying Greek Laws from SuperCl@rity</title>
         <description>&lt;p&gt;In this post we present a step by step tutorial describing the procedure we followed to download all PDF documents containing law texts that form Greek legislation.&lt;/p&gt;
 
 &lt;p&gt;Laws in Greece are published by the &lt;a href=&quot;http://www.et.gr&quot;&gt;National Printing Service (NPS)&lt;/a&gt; as PDF files, a format that is, from a technological point of view, unfriendly for their processing. Since 2010 these files are available to download for free. Unfortunately, NPS does not offer any API that would allow software applications to request and grant access to these documents.&lt;/p&gt;
