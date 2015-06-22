@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scrapying greek laws from SuperCl@rity &#8211; OpenLaws</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="In this post we provide a tutorial about how to downlad all Greek laws from the unofficial UltraCl@rity service, using the popular open source framework Scrapy.">
+    <meta name="author" content="Kostas Plessas">
+    <meta name="keywords" content="legislation, code">
+    <link rel="canonical" href="http://www.openlaws.grhttp://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="http://www.openlaws.gr/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Scrapying greek laws from SuperCl@rity">
+    <meta property="og:description" content="A Project Opening Greek Legislation to Citizens">
+    <meta property="og:url" content="http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/">
+    <meta property="og:site_name" content="OpenLaws">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        
+    
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <div><a href="http://www.openlaws.gr"><img src="http://www.openlaws.gr/images/logo.png" alt="logo"/></a></div>
+      <nav class="site-nav right">
+        <a href="http://www.openlaws.gr/about/">About</a>
+<!--<a href="http://www.openlaws.gr/contact/">Contact</a>-->
+
+      </nav>
+      <div class="clearfix"></div>
+      
+        <div class="social-icons">
+  <div class="right">
+    
+      <a class="fa fa-github" href="https://github.com/OpenLawsGR"></a>
+    
+    
+    <a class="fa fa-rss" href="http://www.openlaws.gr/feed.xml"></a>
+    
+      <a class="fa fa-twitter" href="https://twitter.com/OpenLawsGR"></a>
+    
+    
+    
+      <a class="fa fa-envelope" href="mailto:kplessas@ceid.upatras.gr"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+    
+    
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Scrapying greek laws from SuperCl@rity</h1>
+  <span class="post-meta">Jun 22, 2015</span><br>
+  
+  <span class="post-meta small">9 minute read</span>
+</div>
+
+<article class="post-content">
+  <p>In this post we present a step by step tutorial describing the procedure we followed to download all PDF documents containing law texts that form Greek legislation.</p>
+
+<p>Laws in Greece are published by the <a href="http://www.et.gr">National Printing Service (NPS)</a> as PDF files, a format that is, from a technological point of view, unfriendly for their processing. Since 2010 these files are available to download for free. Unfortunately, NPS does not offer any API that would allow software applications to request and grant access to these documents.</p>
+
+<p>Another service that could be used to obtain these documents is <a href="https://yperdiavgeia.gr/">UltraCl@rity</a>, which is an unofficial and voluntarily developed search engine for public sector decisions. This service apart from decisions published in the governmental <a href="https://diavgeia.gov.gr/">Cl@rity</a> website, contains also the total set of Greek legislation. While it provides an API for querying content published in Cl@rity website, it does not support queries for the total set of Greek laws. </p>
+
+<p>To deal with this situation, our approach was to implement a web crawler. So, here comes the powerful framework &ldquo;Scrapy&rdquo;.</p>
+
+<h3 id="what-is-scrapy?">What is Scrapy?</h3>
+
+<p><a href="http://scrapy.org/">Scrapy</a> is a web crawling framework written in Python. It is a fast and open-source tool for extracting data from websites. Using Scrapy we implemented a crawler that automatically downloads all law PDF files from the UltraCl@rity website. Our preference for this unofficial service instead of the NPS website results from the fact that URLs follow a consistent pattern making it easy to form the required http requests. 
+For example:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">yperdiavgeia</span><span class="o">.</span><span class="n">gr</span><span class="o">/</span><span class="n">laws</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="ss">year_from</span><span class="p">:</span><span class="no">XXXX</span><span class="o">/</span><span class="ss">year_to</span><span class="p">:</span><span class="no">YYYY</span><span class="o">/</span><span class="ss">teuxos</span><span class="p">:</span><span class="n">A</span></code></pre></div>
+
+<p>returns an html page with links to all law documents published between year XXXX and year YYYY. Adding an extra <em>page</em> parameter at the end of the URL allows to easily deal with pagination.</p>
+
+<p>On the other hand, the NPS website provides a form (available <a href="http://www.et.gr/index.php/2013-01-28-14-06-23/2013-01-29-08-13-13">here</a>) that limits search to the first 200 results, making the overall procedure more complex, plus the fact that pagination is implemented client-side with JavaScript.</p>
+
+<h3 id="how-do-we-use-scrapy?">How do we use Scrapy?</h3>
+
+<p>To get a feeling of how scrapy works there is an online tutorial plus installation instructions available <a href="http://doc.scrapy.org/en/0.24/">here</a>. In this post we assume that Scrapy is already installed and a new project has been created, following the structure as described in the tutorial. </p>
+
+<p>Before starting the development of the spider it is necessary to define the data that we want to scrape. This is done by modifying the <em>item.py</em> file. We create <a href="http://doc.scrapy.org/en/0.24/topics/items.html">Items</a> which are described as containers that will be loaded with the scraped data. We give a name to a class (<em>UltraClarityItem</em> in our project) that takes a scrapy item object as a parameter and inside that class we define some atrributes (according to what we need to download from the website) as shown below:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">UltraClarityItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    
+    <span class="n">pass</span></code></pre></div>
+
+<p>The above model defines three attributes used to capture the <em>title</em> (in our case this will be used as the name of the file that the data will be saved to), the <em>URL</em> (where is the item that we want to scrape), and the description referred as <em>desc</em> (later it will become clear that this should contain the content of the PDF file). </p>
+
+<p>Next, we have to declare our Spider. Spiders are user-written classes that must be well defined. With the term well-defined we mean that it is important to instantiate some mandatory fields, for example its unique name etc, create the URLs to download etc and define through methods how content is parsed to extract items. There are some basic methods to use but scrapy also allows to create or override functions in order to obtain a more customized behaviour. All spiders are set up inside a folder named <em>spiders</em>.</p>
+
+<p>In our project we used CrawlSpider which is the most common spider used to crawl regular websites. We create a class named <em>UltraClaritySpider</em> which subclasses the Crawlspider and afterwards we specify its mandatory fields: a <em>name</em> that we will use to call from the terminal, an optional list named <em>Allowed_domains</em> which is a list of domains where the spider will begin to crawl from, when no particular URLs are specified and finally, a list of URLs where the Spider will begin to crawl from. 
+The code below illustrates the above description.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">UltraClaritySpider</span><span class="p">(</span><span class="no">CrawlSpider</span><span class="p">):</span>
+
+    <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;ultraclarity&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;yperdiavgeia.gr&quot;</span><span class="o">]</span>
+    
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="o">[]</span>
+    
+    <span class="k">for</span> <span class="n">year</span> <span class="k">in</span> <span class="n">range</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span> <span class="n">yyyy</span><span class="p">):</span>
+      <span class="n">start_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;http://yperdiavgeia.gr/laws/search/year_from:&quot;</span> <span class="o">+</span> <span class="n">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/year_to:&quot;</span> <span class="o">+</span> <span class="n">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/teuxos:A&quot;</span><span class="p">))</span></code></pre></div>
+
+<p>In order to define <em>start_urls</em> we need to know which years of publications of laws we intend to search for. So, we use a <em>for</em> loop where <em>xxxx</em> and <em>yyyy</em> is the range of years to work with. </p>
+
+<p>Inside <em>UltraClaritySpider</em> class we also implement three methods to help us scrape data. The first one, <em>parse</em> is a basic method, a default callback used by Scrapy to process downloaded responses. </p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+
+    <span class="n">sel</span> <span class="o">=</span> <span class="no">Selector</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">num_pages</span> <span class="o">=</span> <span class="n">pages</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@id=&quot;total-results&quot;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_pages</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="n">request</span> <span class="o">=</span> <span class="no">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/page:&quot;</span> <span class="o">+</span> <span class="n">str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="nb">self</span><span class="o">.</span><span class="n">parse_objects</span><span class="p">)</span>
+      
+      <span class="k">yield</span> <span class="n">request</span></code></pre></div>
+
+<p>The above code shows that we have used a mechanism called <a href="http://doc.scrapy.org/en/0.24/topics/selectors.html">Selector</a> to select which data we are going to extract. Selectors select certain parts of the HTML document specified either by <a href="http://www.w3schools.com/xpath/">XPath</a> or <a href="http://www.w3schools.com/css/">CSS</a> expressions. XPath (which we are using) is a language for selecting nodes in XML and HTML documents. In this method we use selectors to deal with pagination. First, we follow the path to the element that contains the total number of results according to our search, then we use a <em>pages</em> functions that divides this number with the number of results per page (UltraCl@rity Service by default uses ten documents per page) and as mentioned above we can use an extra <em>page</em> parameter to construct the urls dynamically. Multiple requests are processed with this tecnhique and for such requests we implement a callback function named &ldquo;parse_objects&rdquo;. </p>
+
+<p>Now that we have created all requests for every page, we need to fill the items that we created in UltraClarityItem class. Spiders are expected to return their scraped data inside <em>item</em> objects and by taking advantage of selectors and following the tree structure of every page we can easily spot the information we need. In our case, documents are stored in divs having class <em>law</em> or <em>law_alt</em> so for every path we follow we call an instance of the UltraClarityItem and we fill the item title (following the same pattern to all files e.g <em>journal-of-government-issue-num_issue-type_year-of-publication</em>) and the URL that points to the PDF file. As this URL points directly to the law document, we just need to perform requests based on these URLs, define a callback function named <em>parse_urls</em> and just pass the item as metadata so that we can use it in the callback function:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">parse_objects</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+     <span class="n">sel</span> <span class="o">=</span> <span class="no">Selector</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+     <span class="n">paths</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&quot;law&quot;] | //div[@class=&quot;law alt&quot;]&#39;</span><span class="p">)</span>
+     
+     <span class="k">for</span> <span class="n">paths</span> <span class="k">in</span> <span class="ss">paths</span><span class="p">:</span>
+      <span class="n">item</span> <span class="o">=</span> <span class="no">UltraClarityItem</span><span class="p">()</span>
+      <span class="n">title</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;text()[2]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+      <span class="n">item</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">title</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">split</span><span class="p">()</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">title</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">split</span><span class="p">()</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span>
+      <span class="n">item</span><span class="o">[</span><span class="s1">&#39;url&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;a[@class=&quot;title&quot;]/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+      <span class="n">request</span> <span class="o">=</span> <span class="no">Request</span><span class="p">(</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;url&#39;</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">parse_urls</span><span class="p">)</span>
+      <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">[</span><span class="s1">&#39;item&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">item</span>
+      
+      <span class="k">yield</span> <span class="n">request</span></code></pre></div>
+
+<p>The last method of the class is used to store the file in the item&rsquo;s description.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">parse_urls</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+
+      <span class="n">item</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="o">[</span><span class="s1">&#39;item&#39;</span><span class="o">]</span>
+      
+      <span class="n">item</span><span class="o">[</span><span class="s1">&#39;desc&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span>
+      
+      <span class="k">yield</span> <span class="n">item</span></code></pre></div>
+
+<p>Finally, in the last step we need to store every item that contains information locally to our computer. After an item has been scraped by a spider, it is sent to the Item Pipeline which processes it through several components that are executed sequentially. Scrapy provides a placeholder file when you create a project in <em>project_name/pipeline.py</em> that one can modify. Our pipeline is a class that implements a simple method named <em>process_item</em> which stores every item in a file based on the item&rsquo;s title. All we need to do is just open files and store in them the text. For better organisation, we store files in folders based on their year of publication.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">DiavgeiaPipeline</span><span class="p">(</span><span class="n">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;laws/&#39;</span><span class="o">+</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">]+</span><span class="s1">&#39;/&#39;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;laws/&#39;</span><span class="o">+</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">]+</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    
+    <span class="n">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;laws/&#39;</span><span class="o">+</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">]+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="n">as</span> <span class="ss">f</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">item</span><span class="o">[</span><span class="s1">&#39;desc&#39;</span><span class="o">]</span><span class="p">)</span>
+              
+    <span class="k">return</span> <span class="n">item</span></code></pre></div>
+
+<p>This is it! Just calling our spider&rsquo;s name from the terminal will do the job!</p>
+
+</article>
+
+
+  <div class="share-page">
+  Share this post!
+
+  <div class="share-links">
+    
+      <a class = "fa fa-facebook" href="https://facebook.com/sharer.php?u=http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+    
+
+    
+      <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=Scrapying greek laws from SuperCl@rity&url=http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+    
+
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/" rel="nofollow" target="_blank" title="Share on Google+"></a>
+    
+
+    
+      <a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/&title=Scrapying greek laws from SuperCl@rity" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+      <a class = "fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/&t=Scrapying greek laws from SuperCl@rity" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+    
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Based on <a href="https://github.com/johnotander/pixyll">Pixyll</a> theme for <a href="http://jekyllrb.com/">Jekyll</a>.
+      </small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
