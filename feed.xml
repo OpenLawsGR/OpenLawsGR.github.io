@@ -7,6 +7,27 @@
     <atom:link href="http://www.openlaws.grhttp://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>New Conference Publication!</title>
+        <description>&lt;p&gt;Our submission entitled &amp;ldquo;Automated Analysis of Greek Legislative Texts for Version Control: Limitations, Caveats and Challenges&amp;rdquo; was accepted as a short paper and will be presented at the &lt;a href=&quot;http://pci2015.teiath.gr&quot;&gt;19th Panhellenic Conference on Informatics (PCI 2015)&lt;/a&gt;, which will take place in Athens, 1-3 October 2015.&lt;/p&gt;
+
+&lt;p&gt;The paper presents our work so far and focuses on the problems that we are facing in this effort:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There are no official APIs or web services available, providing applications with access to law texts.&lt;/li&gt;
+&lt;li&gt;The provided law texts are not published in a format directly machine processable. PDF files need to get transformed to other formats (such as plain text) and this process could introduce errors, while the preservation of elements such as tables is difficult to get supported. Consequently, texts are not semantically annotated, while such a practice could take place before a law gets published at a low cost rather than performing the challenging task of automatic annotation at a later stage.&lt;/li&gt;
+&lt;li&gt;PDF files before 2004 contain scanned images of the printed laws. Some files also contain scanned images of texts in other languages (e.g. laws approving international agreements). These images are often of low quality, sometimes with skew positioning and contrast variations and their processing with OCR can be an error prone step. &lt;/li&gt;
+&lt;li&gt;Some PDF files are problematic. For example, all files between 2000 and 2005 have imperfect encoding information attached and their transformation to plain texts results in wrong characters. An extra step of character mapping for these files solves this problem. Other examples include a PDF file without content (there is only the phrase “No content was attributed to this issue”!) or a PDF file with wrong pattern text before the signature of the President of the Hellenic Republic (“The President of the Parliament” instead of “The President of the Hellenic Republic”).&lt;/li&gt;
+&lt;li&gt;In some cases the regular expressions that we use, although correct, are unable to match text patterns. The cause of this problem is the ambiguous mixing of look-alike Greek and Latin characters in the text. For example, the Greek word “ΝΟΜΟΣ” that means law and is used for distinguishing laws from other legislative types is found to contain characters encoded in the Latin character set in all positions (capital letters N, O, M look the same in both alphabets) apart from the last one in several cases.&lt;/li&gt;
+&lt;li&gt;Legislative texts before 1982 are written in a different form of the Greek language, called katharevousa that is polytonic (multi accent). As a result, processing and analysis for recent laws written in the current form of the Greek language are not applicable for the case of katharevousa and all effort needs to be repeated.&lt;/li&gt;
+&lt;li&gt;Legislative texts should be written according to the instructions that the Central Legislatorial Committee has issued. However, these instructions were only published in 1984, consequently before that date there was not a formally agreed way for the composition of laws, nevertheless it seems that there is a set of fixed phrases that are usually used. In any case, a careful review of legislative texts is needed to reveal all adopted patterns. Moreover, legislative drafting and linguistic rules are quite general and do not cover all possible cases, increasing the complexity of pattern matching. Finally, we have found several cases of laws where these instructions are not followed. For example, according to an instruction all law titles should appear in nominative case; however we have identified laws whose titles appear in genitive case.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 29 Jun 2015 19:37:00 +0300</pubDate>
+        <link>http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/06/29/PCI2015/</link>
+        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/06/29/PCI2015/</guid>
+      </item>
+    
+      <item>
         <title>Scrapying Greek Laws from UltraCl@rity</title>
         <description>&lt;p&gt;In this post we present a step by step tutorial describing the procedure we followed to download all PDF documents containing law texts that form Greek legislation.&lt;/p&gt;
 
@@ -16,7 +37,7 @@
 
 &lt;p&gt;To deal with this situation, our approach was to implement a web crawler. So, here comes the powerful framework &amp;ldquo;Scrapy&amp;rdquo;.&lt;/p&gt;
 
-&lt;h3 id=&quot;what-is-scrapy&quot;&gt;What is Scrapy?&lt;/h3&gt;
+&lt;h3 id=&quot;what-is-scrapy?&quot;&gt;What is Scrapy?&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://scrapy.org/&quot;&gt;Scrapy&lt;/a&gt; is a web crawling framework written in Python. It is a fast and open-source tool for extracting data from websites. Using Scrapy we implemented a crawler that automatically downloads all law PDF files from the UltraCl@rity website. Our preference for this unofficial service instead of the NPS website results from the fact that URLs follow a consistent pattern making it easy to form the required http requests. 
 For example:&lt;/p&gt;
@@ -27,7 +48,7 @@ For example:&lt;/p&gt;
 
 &lt;p&gt;On the other hand, the NPS website provides a form (available &lt;a href=&quot;http://www.et.gr/index.php/2013-01-28-14-06-23/2013-01-29-08-13-13&quot;&gt;here&lt;/a&gt;) that limits search to the first 200 results, making the overall procedure more complex, plus the fact that pagination is implemented client-side with JavaScript.&lt;/p&gt;
 
-&lt;h3 id=&quot;how-do-we-use-scrapy&quot;&gt;How do we use Scrapy?&lt;/h3&gt;
+&lt;h3 id=&quot;how-do-we-use-scrapy?&quot;&gt;How do we use Scrapy?&lt;/h3&gt;
 
 &lt;p&gt;To get a feeling of how scrapy works there is an online tutorial plus installation instructions available &lt;a href=&quot;http://doc.scrapy.org/en/0.24/&quot;&gt;here&lt;/a&gt;. In this post we assume that Scrapy is already installed and a new project (named ultraclarity) has been created, following the structure as described in the tutorial. &lt;/p&gt;
 
