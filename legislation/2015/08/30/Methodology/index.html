@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Methodology! &#8211; OpenLaws</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A general layout of the proposed methodology.">
+    <meta name="author" content="Kostas Plessas">
+    <meta name="keywords" content="legislation">
+    <link rel="canonical" href="http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/08/30/Methodology/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="http://www.openlaws.gr/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Methodology!">
+    <meta property="og:description" content="A Project Opening Greek Legislation to Citizens">
+    <meta property="og:url" content="http://www.openlaws.gr/legislation/2015/08/30/Methodology/">
+    <meta property="og:site_name" content="OpenLaws">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        
+    
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <div><a href="http://www.openlaws.gr"><img src="http://www.openlaws.gr/images/logo.png" alt="logo"/></a></div>
+      <nav class="site-nav right">
+        <a href="http://www.openlaws.gr/about/">About</a>
+<!--<a href="http://www.openlaws.gr/contact/">Contact</a>-->
+
+      </nav>
+      <div class="clearfix"></div>
+      
+        <div class="social-icons">
+  <div class="right">
+    
+      <a class="fa fa-github" href="https://github.com/OpenLawsGR"></a>
+    
+    
+    <a class="fa fa-rss" href="http://www.openlaws.gr/feed.xml"></a>
+    
+      <a class="fa fa-twitter" href="https://twitter.com/OpenLawsGR"></a>
+    
+    
+    
+      <a class="fa fa-envelope" href="mailto:kplessas@ceid.upatras.gr"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+    
+    
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Methodology!</h1>
+  <span class="post-meta">Aug 30, 2015</span><br>
+  
+  <span class="post-meta small">4 minute read</span>
+</div>
+
+<article class="post-content">
+  <p>In this post we present a general layout of the methodology that we are following:</p>
+
+<ol>
+<li><strong>Collection of Greek Legislation.</strong> Initially, there is the need to collect all greek law documents that are published from the <a href="http://www.et.gr">National Printing Service (NPS)</a> in the Government Gazzette. In a <a href="http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/">previous post</a> we have shown in detail how a crawler that undertakes this task can be implemented.</li>
+<li><strong>Transformation of Files to Plain Text Format.</strong> Law documents are published as PDF files and as a result there is the need to transform them in a format that can easily be processed. We use the &lsquo;pdftotext&rsquo; open source utility for Linux to transform PDF files to plain text documents. Older PDF files (usually before 2004) contain scanned images and since OCR processing can be erroneous and these errors are detrimental to pattern matching, we decided to <u>exclude these files and limit the application of our system to newest laws</u>. OCR training is out of the scope of this project, however it is an extension that we are willing to examine in the future.</li>
+<li><strong>Distinction of Different Legislative Text Types.</strong> Each issue (PDF file) of the Government Gazzette may contain different types of legislative texts (e.g. laws, presidential decrees, ministerial decisions etc.). As our work currently focuses solely on laws, we need to distinguish laws from other legislative types residing in the same file. This is achievable by identifying the text patterns that flag the existence of a law and with the application of regular expressions one is able to isolate the text of each law.</li>
+<li><strong>Law Text Preprocessing.</strong> Law text preprocessing is an important phase of the analysis cycle as it corrects several errors, either already present in the PDF files or produced during the previous steps. Such a process is expected to facilitate future analysis steps and natural language processing. In this phase, regular expressions can be used to remove irrelevant text that is transferred to the plain text files when transforming the PDF files: PDF page numbering, digital signature text, original file’s headers and footers, characters that are considered as garbage etc. Moreover, words divided by hyphens at the end of lines are fixed by concatenation. Finally, some abbreviations are temporarily substituted by the full words, as our first experimentations with the python suite <a href="http://www.nltk.org/">NLTK</a>, which provides tools for natural language processing, showed that they sometimes cause problems, e.g. resulting in wrong sentence segmentation.</li>
+<li><strong>Structural Analysis.</strong> In order to automatically perform transformations to a law&rsquo;s content according to a modification, it is necessary to be aware of the structure of each law. Modifications refer to structural elements (such as articles, paragraphs, sub-paragraphs etc.) that a reader can easily search and identify within the text. However, a machine needs to analyze the text to recognize these elements. We are currently working on a module that parses each law text, performs structural analysis and identifies the structural elements. Laws’ structure follows distinct patterns, in the sense that laws should be written according to rules set by the Central Legislatorial Committee that explicitly define the structural parts of the text. Our module is based on regular expressions that match the patterns that occur according to these rules. After the analysis, we intend to store each law in XML format for internal representation purposed, which allows for a hierarchical layout of nodes, each one corresponding to a structural element.</li>
+<li><strong>Identification and Automatic Application of Modifications.</strong> The last step of the methodology for the implementation of our system involves the identification of modifications in all text files and their recurrent application, in a proper chronological order, on the original law text they refer to, for the consolidation of all law versions. A modification may refer to an addition, suppression or substitution of a text portion. The verbs that are used to declare each case are usually the same or belong to a list of synonyms and can be used to detect possible modifications. Each candidate text portion should get further analyzed in order to detect if it follows a modification’s pattern (e.g. containing references to structural elements of another law) or it happens to appear within the law content as a simple verb occurrence. When a modification is identified and categorized as one of the three cases, a semantic and syntactic analysis will reveal which elements should change (e.g. a specific article of a law) and how (e.g. a specific text should be added at the beginning of that article). When all modifications are identified and analyzed, a script should traverse all laws and transform the appropriate laws’ texts according to the defined actions. The identification of the position of each modification’s referencing elements within the files should be straightforward due to the structural analysis presented in the previous step. When a new version of a law is produced, it will be committed and pushed to the version control repository.</li>
+</ol>
+
+<p>Steps 1-4 are already successfully implemented. Step 5 is almost done and we will soon report on our respective work. Step 6 is still under design and normally we may need to reconsider some of our thoughts.</p>
+
+</article>
+
+
+  <div class="share-page">
+  Share this post!
+
+  <div class="share-links">
+    
+      <a class = "fa fa-facebook" href="https://facebook.com/sharer.php?u=http://www.openlaws.gr/legislation/2015/08/30/Methodology/" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+    
+
+    
+      <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=Methodology!&url=http://www.openlaws.gr/legislation/2015/08/30/Methodology/" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+    
+
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://www.openlaws.gr/legislation/2015/08/30/Methodology/" rel="nofollow" target="_blank" title="Share on Google+"></a>
+    
+
+    
+      <a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=http://www.openlaws.gr/legislation/2015/08/30/Methodology/&title=Methodology!" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+      <a class = "fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=http://www.openlaws.gr/legislation/2015/08/30/Methodology/&t=Methodology!" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+    
+
+
+  </div>
+</div>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'OpenLawsGR';
+    var disqus_identifier = '/legislation/2015/08/30/Methodology';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Based on <a href="https://github.com/johnotander/pixyll">Pixyll</a> theme for <a href="http://jekyllrb.com/">Jekyll</a>. This site is not affiliated in any way to <a href="https://www.openlaws.eu">openlaws.eu</a>.
+      </small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
