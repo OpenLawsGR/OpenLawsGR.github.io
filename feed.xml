@@ -3,14 +3,14 @@
   <channel>
     <title>OpenLaws</title>
     <description>A Project Opening Greek Legislation to Citizens</description>
-    <link>http://www.openlaws.grhttp://www.openlaws.gr/</link>
-    <atom:link href="http://www.openlaws.grhttp://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://www.openlaws.gr/</link>
+    <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>PCI2015</title>
         <description>&lt;p&gt;Today, it was the last day of the &lt;a href=&quot;http://pci2015.teiath.gr&quot;&gt;19th Panhellenic Conference on Informatics (PCI 2015)&lt;/a&gt;, which was held in Athens from 1-3 October 2015. In this conference we had the chance to discuss some initial results of our work in progress and especially some of the problems that we are facing, as (as announced in a &lt;a href=&quot;http://www.openlaws.gr/publications/2015/06/29/PCI2015/&quot;&gt;previous post&lt;/a&gt;) we were presenting a short paper entitled &amp;ldquo;Automated Analysis of Greek Legislative Texts for Version Control: Limitations, Caveats and Challenges&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://www.openlaws.gr/images/presentation_pci2015.jpg&quot; alt=&quot;Presenting the paper&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/presentation_pci2015.jpg&quot; alt=&quot;Presenting the paper&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;The audience seemed to be as excited as we are on this work, which we believe it is an encouraging indicator of the importance of this project not only for the scientific community, but also for the general public.&lt;/p&gt;
 
@@ -21,8 +21,8 @@
 &lt;p&gt;Finally, the presentation can be downloaded from &lt;a href=&quot;https://www.dropbox.com/s/thyijzicucllv5q/pci2015_presentation.pdf?dl=0&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sat, 03 Oct 2015 20:50:00 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/10/03/PCI2015/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/10/03/PCI2015/</guid>
+        <link>http://www.openlaws.gr/publications/2015/10/03/PCI2015/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/publications/2015/10/03/PCI2015/</guid>
       </item>
     
       <item>
@@ -41,8 +41,8 @@
 &lt;p&gt;Steps 1-4 are already successfully implemented. Step 5 is almost done and we will soon report on our respective work. Step 6 is still under design and normally we may need to reconsider some of our thoughts.&lt;/p&gt;
 </description>
         <pubDate>Sun, 30 Aug 2015 13:03:00 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/08/30/Methodology/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/08/30/Methodology/</guid>
+        <link>http://www.openlaws.gr/legislation/2015/08/30/Methodology/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/08/30/Methodology/</guid>
       </item>
     
       <item>
@@ -62,8 +62,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 29 Jun 2015 19:37:00 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/06/29/PCI2015/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/publications/2015/06/29/PCI2015/</guid>
+        <link>http://www.openlaws.gr/publications/2015/06/29/PCI2015/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/publications/2015/06/29/PCI2015/</guid>
       </item>
     
       <item>
@@ -177,15 +177,15 @@ As we will developing the spider, packages need to be imported to avoid errors w
 &lt;p&gt;This is it! Just calling our spider&amp;rsquo;s name from the terminal will do the job!&lt;/p&gt;
 </description>
         <pubDate>Mon, 22 Jun 2015 03:37:19 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</guid>
+        <link>http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</guid>
       </item>
     
       <item>
         <title>Short Anatomy of a Greek Law</title>
         <description>&lt;p&gt;Greek laws are published by the &lt;a href=&quot;http://www.et.gr&quot;&gt;National Printing Service&lt;/a&gt; as texts contained in issues of the Journal of the Greek Government. These issues are actually pdf files.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://www.openlaws.gr/images/lawgr.png&quot; alt=&quot;Greek law texts example&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/lawgr.png&quot; alt=&quot;Greek law texts example&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Law texts within an issue contain references to parts (e.g. articles, paragraphs etc.) of other issues. The reader should manage these references by himself as there are no links leading to the referenced content: search and download the appropriate pdf files and scan them to locate the content.&lt;/p&gt;
 
@@ -198,8 +198,8 @@ As we will developing the spider, packages need to be imported to avoid errors w
 &lt;p&gt;In such a case, the reader should find the text of law 3429/2005, locate article 19 and substitute its content with the new one. Usually, such modifications of a law&amp;rsquo;s text reside in many different issues, while it is possible that the same part of a law is modified several times through its lifecycle&lt;/p&gt;
 </description>
         <pubDate>Wed, 17 Jun 2015 19:55:00 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</guid>
+        <link>http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</guid>
       </item>
     
       <item>
@@ -215,8 +215,8 @@ As we will developing the spider, packages need to be imported to avoid errors w
 &lt;p&gt;Stay tuned!&lt;/p&gt;
 </description>
         <pubDate>Wed, 17 Jun 2015 03:37:19 +0300</pubDate>
-        <link>http://www.openlaws.grhttp://www.openlaws.gr/general/2015/06/17/hello-world/</link>
-        <guid isPermaLink="true">http://www.openlaws.grhttp://www.openlaws.gr/general/2015/06/17/hello-world/</guid>
+        <link>http://www.openlaws.gr/general/2015/06/17/hello-world/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/general/2015/06/17/hello-world/</guid>
       </item>
     
   </channel>
