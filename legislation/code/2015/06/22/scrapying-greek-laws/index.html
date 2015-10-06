@@ -166,7 +166,7 @@ As we will developing the spider, packages need to be imported to avoid errors w
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
     <span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-    <span class="n">num_pages</span> <span class="o">=</span> <span class="n">pages</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//div[@id=&quot;total-results&quot;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">num_pages</span> <span class="o">=</span> <span class="n">pages</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//span[@id=&quot;total-results&quot;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
     
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_pages</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s">&quot;/page:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_objects</span><span class="p">)</span>
@@ -211,7 +211,8 @@ As we will developing the spider, packages need to be imported to avoid errors w
             
         <span class="k">return</span> <span class="n">item</span></code></pre></div>
 
-<p>This is it! Just calling our spider&rsquo;s name from the terminal will do the job!</p>
+<p>This is it! Just calling our spider&rsquo;s name from the terminal will do the job!
+The source code is available in <a href="https://github.com/OpenLawsGR/ultraclarity-crawler">Github</a></p>
 
 </article>
 
