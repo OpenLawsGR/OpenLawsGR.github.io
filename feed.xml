@@ -7,6 +7,21 @@
     <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>New academic publications!</title>
+        <description>&lt;p&gt;This month we were very happy to get notified that two papers describing our work, which we had submitted in two conferences were accepted!&lt;/p&gt;
+
+&lt;p&gt;The first one will be presented as a full paper at the &lt;a href=&quot;http://pci2016.teiwest.gr/&quot;&gt;20th Panhellenic Conference on Informatics (PCI 2016)&lt;/a&gt; and its title is &amp;ldquo;A semi-automatic system for the consolidation of Greek legislative texts&amp;rdquo;. The abstract is as follows:
+&amp;ldquo;The process of manually consolidating the historical revisions of law documents, by finding and applying in the appropriate chronological order all existing modifications to the original text, is usually tedious and mentally demanding. However, since legal language is highly structured, natural language processing techniques can be adopted to automate this process. In this paper, we present a semi-automatic system for the consolidation of Greek legislative texts, following an approach based on regular expressions. Consolidated versions of laws are pushed in a revision control system, enhancing open access to legislation. A manual step is necessary in order to fix system failures caused by syntax errors or related to wrong application of the legal rules by law makers.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The second is a short paper that was accepted for a poster presentation at &lt;a href=&quot;http://jurix2016.unice.fr/&quot;&gt;Jurix 2016&lt;/a&gt; and its title is &amp;ldquo;Automatic identification, extraction and application of textual amendments in Greek legislative texts&amp;rdquo;. The abstract is as follows:
+&amp;ldquo;The automatic analysis of legislative texts using Natural Language Processing techniques is able to facilitate several tasks related to the legislation lifecycle, such as the consolidation of different versions of legal documents. We present our work on the automatic identification, extraction and application of textual amendments in Greek legislative texts, based on pattern matching with regular expressions, which is part of a semi-automatic system for the consolidation of Greek laws.&amp;rdquo;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Oct 2016 11:00:00 +0300</pubDate>
+        <link>http://www.openlaws.gr/publications/2016/10/17/New-publications/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/publications/2016/10/17/New-publications/</guid>
+      </item>
+    
+      <item>
         <title>Convert PDF law files to plain text using pdftotext</title>
         <description>&lt;p&gt;In a &lt;a href=&quot;http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/&quot;&gt;previous post&lt;/a&gt;, we briefly presented a tutorial for downloading greek legislative texts using Scrapy. Having acquired and organized all law documents based on their year of publication, it is important to transform them in plain text format in order to start their analysis using natural language processing techniques. PDF is a format that is not easily processable and in order to perform the task of transformation, we introduce &lt;a href=&quot;http://linux.die.net/man/1/pdftotext&quot;&gt;pdftotext&lt;/a&gt;, an open source utility for Linux, appropriate for such operations.&lt;/p&gt;
 
