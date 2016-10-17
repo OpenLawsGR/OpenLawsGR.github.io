@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Revised system architecture &#8211; OpenLaws</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The revised architecture of our system.">
+    <meta name="author" content="Kostas Plessas">
+    <meta name="keywords" content="legislation">
+    <link rel="canonical" href="http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Revised system architecture">
+    <meta property="og:description" content="A Project Opening Greek Legislation to Citizens">
+    <meta property="og:url" content="http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/">
+    <meta property="og:site_name" content="OpenLaws">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        
+    
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <div><a href="http://www.openlaws.gr"><img src="/images/logo.png" alt="logo"/></a></div>
+      <nav class="site-nav right">
+        <a href="/about/">About</a>
+<!--<a href="/contact/">Contact</a>-->
+
+      </nav>
+      <div class="clearfix"></div>
+      
+        <div class="social-icons">
+  <div class="right">
+    
+      <a class="fa fa-github" href="https://github.com/OpenLawsGR"></a>
+    
+    
+    <a class="fa fa-rss" href="/feed.xml"></a>
+    
+      <a class="fa fa-twitter" href="https://twitter.com/OpenLawsGR"></a>
+    
+    
+    
+      <a class="fa fa-envelope" href="mailto:kplessas@ceid.upatras.gr"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+    
+    
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Revised system architecture</h1>
+  <span class="post-meta">Oct 17, 2016</span><br>
+  
+  <span class="post-meta small">4 minute read</span>
+</div>
+
+<article class="post-content">
+  <p>In a <a href="/legislation/2015/08/30/Methodology/">previous post</a> we had presented a general layout of the methodology that we intended to follow. At that time, we wanted to implement a completely automatic system for the consolidation of Greek legislation. However, this proved to be impossible due to errors (e.g. syntax errors) found in the legislative texts. As a result, we had to revise the architecture of our system, adding one more step after that of structural analysis. In this step, we use a validator (parsing the xml documents used for the markup of law texts), which is able to detect xml files with wrong structure (e.g. elements missing or in wrong order). Then, there is a need for manual intervention and correction of these files. The revised architecture is shown below:</p>
+
+<p><img src="/images/architecture.png" alt="Revised architecture"></p>
+
+<p>When writing the <a href="/legislation/2015/08/30/Methodology/">initial post</a> about the methodology, only steps 1-4 were implemented. Now that system is at the last phase of development, it is a good chance to update the descriptions of the remaining steps:</p>
+
+<p><strong>Structural Analysis:</strong> In order to automatically perform transformations to a law text based on a modification&rsquo;s content, it is necessary to be aware of the structure of each law. Modifications refer to structural elements (such as articles, paragraphs, sub-paragraphs etc.) that a reader can easily search and identify within the text. However, a machine needs to analyze the text, processing natural language, to recognize these elements.This module of our system parses each law text, performs structural analysis and identifies the structural elements. Laws&rsquo; structure follows distinct patterns, in the sense that laws should be written according to the rules set by the Central Legislatorial Committee that explicitly define the structural parts of the text. The appropriate regular expressions match the patterns that occur according to these rules. Pattern matching is done recursively for each detected structural element, finding its children elements and the same process goes on. After the recognition of these elements, an XML file for each law is generated. The analysis stops at the level of paragraphs, as this is the first visited element that may contain modifications when traversing the structural hierarchy from top to bottom.</p>
+
+<p><strong>Validation and Manual Editing:</strong> Law texts may contain grammar or syntax errors and misprints. Moreover, rules and patterns are not always followed by law makers and while we had reviewed and incorporated in our system many cases of informal patterns, it is practically impossible to cover the total set of them. Hence, these problems result in incorrect XML files. In order to detect these problematic files, an XML validator was implemented. The validator checks if the hierarchy of the structural elements is followed and validates the numbering sequence of the elements, as most faults result in erroneous sequence due to unsuccessful elements detection. Those files that do not pass validation need manual editing and corrections. </p>
+
+<p><strong>Identification and Automatic Application of Modifications:</strong> Modifications fell into three categories: addition, substitution or deletion of a text portion. In order to detect the patterns for these categories that should be transformed to regular expressions, we needed to identify the verbs that are used to declare each case, since they are usually the same or belong to a list of synonyms. For this purpose, we considered a random sample of 100 laws and using the Greek POS tagger from <a href="http://nlp.cs.aueb.gr/software.html">AUEB Natural Language Processing Group</a>, we created a frequency matrix of the verbs found in the sample that are in present tense and passive voice. The most frequently used verbs (e.g. is replaced, is added etc.) that semantically belong to the above categories, along with their synonyms, were used to form the appropriate regular expressions. Nineteen regular expressions were formed that capture successfully 96,1% (1.789 out of 1.861) of modifications existing in the sample. It is interesting that only three regular expressions are adequate to detect 85% of all successfully matched cases. Pattern matching occurs at the level of paragraphs, so paragraphs are distinguished in amending and non-amending. According to the regular expression that returns a match in each case, we are able to know in which place there is the necessary information to perform the modification: modification category, cited law, referenced element, text to add or replace or text to delete. These data are used to annotate modifications in the XML files. When all modifications are identified and annotated, a script traverses all laws’ XML files in a chronological order and transforms the appropriate XML nodes (elements) according to the actions defined in the detected modifications, creating new file revisions. As mentioned earlier, structural analysis stops at the level of paragraphs. When a modification requires changes in a lower level (e.g. passage or case), paragraphs are broken down in passages using the <a href="http://www.nltk.org/">Python NLTK suite</a>, which we trained using our sample corpus of 100 laws to get much better results.</p>
+
+<p><strong>XSL Transformation and Push to Repository:</strong> In this last step the appropriate XSL transformations are applied to the XML files that represent laws revisions in order to generate user friendly text versions of them. These text revisions are then pushed in a <a href="https://github.com/OpenLawsGR/greek_laws_alpha">Github repository</a>, an alpha version of which is already publically available.</p>
+
+</article>
+
+
+  <div class="share-page">
+  Share this post!
+
+  <div class="share-links">
+    
+      <a class = "fa fa-facebook" href="https://facebook.com/sharer.php?u=http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+    
+
+    
+      <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=Revised system architecture&url=http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+    
+
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/" rel="nofollow" target="_blank" title="Share on Google+"></a>
+    
+
+    
+      <a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/&title=Revised system architecture" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+      <a class = "fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=http://www.openlaws.gr/legislation/2016/10/17/revised-architecture/&t=Revised system architecture" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+    
+
+
+  </div>
+</div>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'OpenLawsGR';
+    var disqus_identifier = '/legislation/2016/10/17/revised-architecture';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Based on <a href="https://github.com/johnotander/pixyll">Pixyll</a> theme for <a href="http://jekyllrb.com/">Jekyll</a>. This site is not affiliated in any way to <a href="http://www.openlaws.eu">openlaws.eu</a>.
+      </small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
