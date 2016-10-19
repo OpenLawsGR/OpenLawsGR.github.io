@@ -7,6 +7,23 @@
     <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Master thesis presentation</title>
+        <description>&lt;p&gt;This project is implemented in the framework of a Master thesis for the postgraduate program Computer Science and Technology at the &lt;a href=&quot;https://www.ceid.upatras.gr/en&quot;&gt;Department of Computer Engineering and Informatics&lt;/a&gt; of the &lt;a href=&quot;http://www.upatras.gr/en&quot;&gt;University of Patras&lt;/a&gt;, which is supervised by &lt;a href=&quot;http://athos.cti.gr/garofalakis/index_en.htm&quot;&gt;Prof. John Garofalakis&lt;/a&gt; and postdoctoral researcher &lt;a href=&quot;http://www.plessas.info/index.php/home-en/&quot;&gt;Athanasios Plessas&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Last week, the defense presentation of the thesis took place successfully.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/master_thesis_presentation.jpg&quot; alt=&quot;Master thesis presentation&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The text of the thesis (in Greek) can be found &lt;a href=&quot;https://dl.dropboxusercontent.com/u/104921582/K.Plessas_Master_Thesis.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The presentation (also in Greek) can be found &lt;a href=&quot;https://dl.dropboxusercontent.com/u/104921582/K.Plessas_Master_Thesis_Presentation.pdf&quot;&gt;here&lt;/a&gt;. &lt;/p&gt;
+</description>
+        <pubDate>Wed, 19 Oct 2016 11:00:00 +0300</pubDate>
+        <link>http://www.openlaws.gr/publications/2016/10/19/master-thesis-presentation/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/publications/2016/10/19/master-thesis-presentation/</guid>
+      </item>
+    
+      <item>
         <title>Revised system architecture</title>
         <description>&lt;p&gt;In a &lt;a href=&quot;/legislation/2015/08/30/Methodology/&quot;&gt;previous post&lt;/a&gt; we had presented a general layout of the methodology that we intended to follow. At that time, we wanted to implement a completely automatic system for the consolidation of Greek legislation. However, this proved to be impossible due to errors (e.g. syntax errors) found in the legislative texts. As a result, we had to revise the architecture of our system, adding one more step after that of structural analysis. In this step, we use a validator (parsing the xml documents used for the markup of law texts), which is able to detect xml files with wrong structure (e.g. elements missing or in wrong order). Then, there is a need for manual intervention and correction of these files. The revised architecture is shown below:&lt;/p&gt;
 
@@ -282,23 +299,6 @@ The source code is available in &lt;a href=&quot;https://github.com/OpenLawsGR/u
         <pubDate>Wed, 17 Jun 2015 19:55:00 +0300</pubDate>
         <link>http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</link>
         <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</guid>
-      </item>
-    
-      <item>
-        <title>Hello World!</title>
-        <description>&lt;p&gt;As in most countries, in Greece laws are published as documents usually containing many references to other legal documents and often verbally describing modifications to existing laws. Assembling all pieces in order to find the valid version of a law at a given moment is a tedious task, requiring increased cognitive load. Commercial databases that codify legislation are available, however there is not such a free service for citizens, not even for public bodies. Sometimes, one may find codified laws in public organizations or other bodies (e.g. communities) websites, however their update with the last changes depends on each website manager.&lt;/p&gt;
-
-&lt;p&gt;As legal language usually follows quite formal patterns, natural language processing techniques can be used for the automatic consolidation of Greek law documents and their publishing through version control systems, which allow the tracking of different text versions. &lt;/p&gt;
-
-&lt;h3 id=&quot;our-effort&quot;&gt;Our effort&lt;/h3&gt;
-
-&lt;p&gt;We will use this blog to post updates on our work towards the above described direction. We are trying to create software that will automatically identify law modifications and apply them on the original law texts. Upon success, we will use Github for law version tracking.&lt;/p&gt;
-
-&lt;p&gt;Stay tuned!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 17 Jun 2015 03:37:19 +0300</pubDate>
-        <link>http://www.openlaws.gr/general/2015/06/17/hello-world/</link>
-        <guid isPermaLink="true">http://www.openlaws.gr/general/2015/06/17/hello-world/</guid>
       </item>
     
   </channel>
