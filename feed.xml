@@ -7,6 +7,29 @@
     <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Distinction of Different Legislative Text Types</title>
+        <description>&lt;p&gt;In this tutorial we focus on the distinction of Greek laws from other types of legislative text (e.g. presidential decrees, ministerial decisions etc.) that are present in the Official Government Gazette issues. While at this stage we put our effort solely on laws, it is our future intention to examine whether modeling regular expressions for structural analysis can be applied to other types of legislative texts (according to the rules that the Central Legislatorial Committee has published). &lt;/p&gt;
+
+&lt;p&gt;A considerable number of Greek laws refers to ratifications of international agreements. In this case, the agreement text is usually incorporated into the PDF file as a scanned image requiring OCR (Optical Character Recognition) techniques, a step that imposes significant obstacles in text analysis. Even if plain text was available, these agreements are usually drafted either in the language of the contracting parties, or in &lt;em&gt;&amp;ldquo;&amp;hellip; Chinese, French, Russian, English and Spanish versions which are equally authentic &amp;hellip;&amp;rdquo;&lt;/em&gt; in accordance to Article 111 of the United Nations Charter. As our patterns are modeled in Greek, the latter would be detrimental for pattern matching within the contents, which is necessary in the framework of the automated recognition and application of modifications or for identifying the structural components of the text. Consequently, these laws should be excluded. &lt;/p&gt;
+
+&lt;p&gt;The distinction is based on the fact that specific words are used to flag the beginning and the end of each legislative text type. For instance, each law always begins with the word &amp;ldquo;Law&amp;rdquo; followed by its number and ends with a reference to the President of the Hellenic Republic. However, we faced several problems during the design phase of the regular expressions that were needed. One problem identified is the ambiguity in the use of the apostrophe in the word &amp;ldquo;ΥΠ&amp;rdquo;, which is used before the word &amp;ldquo;number&amp;rdquo; and after the word &amp;ldquo;law&amp;rdquo; in the Greek language. We observed the use of three different types of apostrophes resulting in difficulty locating and extracting laws. Furthermore, there is also a case where the reference to the President of the Hellenic Republic at the end of the law (Government Gazette 203, Issue A, 2004) was wrong, stating &lt;em&gt;&amp;ldquo;THE PRESIDENT OF THE PARLIAMENT&amp;rdquo;&lt;/em&gt; instead of &amp;ldquo;THE PRESIDENT OF THE HELLENIC REPUBLIC&amp;rdquo;, naming Karolos Papoulias (President of the Hellenic Republic at that time) as the person signing the law.&lt;/p&gt;
+
+&lt;p&gt;The main problem, nevertheless, is the use of Latin characters (looking alike in the the Greek and Latin alphabets, such as O, N or M) mixed with Greek characters in words that are used to flag the start or the end of each law, a case which may pass unnoticed by the reader but causes serious problems in the process of pattern matching.&lt;/p&gt;
+
+&lt;p&gt;Based on the above analysis and observations, fourteen (14) different regular expressions are necessary to identify and export laws texts as shown in the image below (red characters indicate the existence of Latin characters instead of Greek): &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/laws_matching_patterns.jpg&quot; alt=&quot;Regular expressions for the identification of laws&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Our analysis on texts published between 2004 and 2015 shows that in a total of 3209 PDF files, 1128 laws have been exported, from which 578 were excluded from further analysis since they were ratifying international agreements that the parliament had approved. As a result, our main experimental sample consists of 550 laws. &lt;/p&gt;
+
+&lt;p&gt;The source code of the module for the extraction of laws from the plain texts of the Government Gazzette issues can be found &lt;a href=&quot;https://github.com/OpenLawsGR/greek_laws_consolidation_code/blob/master/python_code/extract_laws.py&quot;&gt;here&lt;/a&gt; while the code that excludes international agreements &lt;a href=&quot;https://github.com/OpenLawsGR/greek_laws_consolidation_code/blob/master/python_code/split_laws_international_agreements.py&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Oct 2016 16:15:00 +0300</pubDate>
+        <link>http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/</guid>
+      </item>
+    
+      <item>
         <title>Master thesis presentation</title>
         <description>&lt;p&gt;This project is implemented in the framework of a Master thesis for the postgraduate program Computer Science and Technology at the &lt;a href=&quot;https://www.ceid.upatras.gr/en&quot;&gt;Department of Computer Engineering and Informatics&lt;/a&gt; of the &lt;a href=&quot;http://www.upatras.gr/en&quot;&gt;University of Patras&lt;/a&gt;, which is supervised by &lt;a href=&quot;http://athos.cti.gr/garofalakis/index_en.htm&quot;&gt;Prof. John Garofalakis&lt;/a&gt; and postdoctoral researcher &lt;a href=&quot;http://www.plessas.info/index.php/home-en/&quot;&gt;Athanasios Plessas&lt;/a&gt;.&lt;/p&gt;
 
@@ -278,27 +301,6 @@ The source code is available in &lt;a href=&quot;https://github.com/OpenLawsGR/u
         <pubDate>Mon, 22 Jun 2015 03:37:19 +0300</pubDate>
         <link>http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</link>
         <guid isPermaLink="true">http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/</guid>
-      </item>
-    
-      <item>
-        <title>Short Anatomy of a Greek Law</title>
-        <description>&lt;p&gt;Greek laws are published by the &lt;a href=&quot;http://www.et.gr&quot;&gt;National Printing Service&lt;/a&gt; as texts contained in issues of the Journal of the Greek Government. These issues are actually pdf files.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/lawgr.png&quot; alt=&quot;Greek law texts example&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Law texts within an issue contain references to parts (e.g. articles, paragraphs etc.) of other issues. The reader should manage these references by himself as there are no links leading to the referenced content: search and download the appropriate pdf files and scan them to locate the content.&lt;/p&gt;
-
-&lt;p&gt;Law modifications (additions, deletions, insertions, updates) are verbally described. For example consider the following phrase from a Greek law:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Article 19 of law 3429/2005 (issue 314 A) is substituted as follows: &amp;ldquo;&amp;hellip;&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In such a case, the reader should find the text of law 3429/2005, locate article 19 and substitute its content with the new one. Usually, such modifications of a law&amp;rsquo;s text reside in many different issues, while it is possible that the same part of a law is modified several times through its lifecycle&lt;/p&gt;
-</description>
-        <pubDate>Wed, 17 Jun 2015 19:55:00 +0300</pubDate>
-        <link>http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</link>
-        <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/06/17/anatomy-of-greek-law/</guid>
       </item>
     
   </channel>

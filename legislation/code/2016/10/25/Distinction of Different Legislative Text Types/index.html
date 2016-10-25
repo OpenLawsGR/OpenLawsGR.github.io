@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Distinction of Different Legislative Text Types &#8211; OpenLaws</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A short tutorial on distinguishing Greek laws from other types of legislative texts in the Government Gazzette issues">
+    <meta name="author" content="Kostas Plessas">
+    <meta name="keywords" content="legislation, code">
+    <link rel="canonical" href="http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Distinction of Different Legislative Text Types">
+    <meta property="og:description" content="A Project Opening Greek Legislation to Citizens">
+    <meta property="og:url" content="http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/">
+    <meta property="og:site_name" content="OpenLaws">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        
+    
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <div><a href="http://www.openlaws.gr"><img src="/images/logo.png" alt="logo"/></a></div>
+      <nav class="site-nav right">
+        <a href="/about/">About</a>
+<!--<a href="/contact/">Contact</a>-->
+
+      </nav>
+      <div class="clearfix"></div>
+      
+        <div class="social-icons">
+  <div class="right">
+    
+      <a class="fa fa-github" href="https://github.com/OpenLawsGR"></a>
+    
+    
+    <a class="fa fa-rss" href="/feed.xml"></a>
+    
+      <a class="fa fa-twitter" href="https://twitter.com/OpenLawsGR"></a>
+    
+    
+    
+      <a class="fa fa-envelope" href="mailto:kplessas@ceid.upatras.gr"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+    
+    
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Distinction of Different Legislative Text Types</h1>
+  <span class="post-meta">Oct 25, 2016</span><br>
+  
+  <span class="post-meta small">3 minute read</span>
+</div>
+
+<article class="post-content">
+  <p>In this tutorial we focus on the distinction of Greek laws from other types of legislative text (e.g. presidential decrees, ministerial decisions etc.) that are present in the Official Government Gazette issues. While at this stage we put our effort solely on laws, it is our future intention to examine whether modeling regular expressions for structural analysis can be applied to other types of legislative texts (according to the rules that the Central Legislatorial Committee has published). </p>
+
+<p>A considerable number of Greek laws refers to ratifications of international agreements. In this case, the agreement text is usually incorporated into the PDF file as a scanned image requiring OCR (Optical Character Recognition) techniques, a step that imposes significant obstacles in text analysis. Even if plain text was available, these agreements are usually drafted either in the language of the contracting parties, or in <em>&ldquo;&hellip; Chinese, French, Russian, English and Spanish versions which are equally authentic &hellip;&rdquo;</em> in accordance to Article 111 of the United Nations Charter. As our patterns are modeled in Greek, the latter would be detrimental for pattern matching within the contents, which is necessary in the framework of the automated recognition and application of modifications or for identifying the structural components of the text. Consequently, these laws should be excluded. </p>
+
+<p>The distinction is based on the fact that specific words are used to flag the beginning and the end of each legislative text type. For instance, each law always begins with the word &ldquo;Law&rdquo; followed by its number and ends with a reference to the President of the Hellenic Republic. However, we faced several problems during the design phase of the regular expressions that were needed. One problem identified is the ambiguity in the use of the apostrophe in the word &ldquo;ΥΠ&rdquo;, which is used before the word &ldquo;number&rdquo; and after the word &ldquo;law&rdquo; in the Greek language. We observed the use of three different types of apostrophes resulting in difficulty locating and extracting laws. Furthermore, there is also a case where the reference to the President of the Hellenic Republic at the end of the law (Government Gazette 203, Issue A, 2004) was wrong, stating <em>&ldquo;THE PRESIDENT OF THE PARLIAMENT&rdquo;</em> instead of &ldquo;THE PRESIDENT OF THE HELLENIC REPUBLIC&rdquo;, naming Karolos Papoulias (President of the Hellenic Republic at that time) as the person signing the law.</p>
+
+<p>The main problem, nevertheless, is the use of Latin characters (looking alike in the the Greek and Latin alphabets, such as O, N or M) mixed with Greek characters in words that are used to flag the start or the end of each law, a case which may pass unnoticed by the reader but causes serious problems in the process of pattern matching.</p>
+
+<p>Based on the above analysis and observations, fourteen (14) different regular expressions are necessary to identify and export laws texts as shown in the image below (red characters indicate the existence of Latin characters instead of Greek): </p>
+
+<p><img src="/images/laws_matching_patterns.jpg" alt="Regular expressions for the identification of laws"></p>
+
+<p>Our analysis on texts published between 2004 and 2015 shows that in a total of 3209 PDF files, 1128 laws have been exported, from which 578 were excluded from further analysis since they were ratifying international agreements that the parliament had approved. As a result, our main experimental sample consists of 550 laws. </p>
+
+<p>The source code of the module for the extraction of laws from the plain texts of the Government Gazzette issues can be found <a href="https://github.com/OpenLawsGR/greek_laws_consolidation_code/blob/master/python_code/extract_laws.py">here</a> while the code that excludes international agreements <a href="https://github.com/OpenLawsGR/greek_laws_consolidation_code/blob/master/python_code/split_laws_international_agreements.py">here</a></p>
+
+</article>
+
+
+  <div class="share-page">
+  Share this post!
+
+  <div class="share-links">
+    
+      <a class = "fa fa-facebook" href="https://facebook.com/sharer.php?u=http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+    
+
+    
+      <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=Distinction of Different Legislative Text Types&url=http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+    
+
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/" rel="nofollow" target="_blank" title="Share on Google+"></a>
+    
+
+    
+      <a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/&title=Distinction of Different Legislative Text Types" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+      <a class = "fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=http://www.openlaws.gr/legislation/code/2016/10/25/Distinction%20of%20Different%20Legislative%20Text%20Types/&t=Distinction of Different Legislative Text Types" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+    
+
+
+  </div>
+</div>
+
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'OpenLawsGR';
+    var disqus_identifier = '/legislation/code/2016/10/25/Distinction of Different Legislative Text Types';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Based on <a href="https://github.com/johnotander/pixyll">Pixyll</a> theme for <a href="http://jekyllrb.com/">Jekyll</a>. This site is not affiliated in any way to <a href="http://www.openlaws.eu">openlaws.eu</a>.
+      </small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
