@@ -7,6 +7,21 @@
     <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>PCI 2016</title>
+        <description>&lt;p&gt;Today, it was the second day of the &lt;a href=&quot;http://pci2016.teiwest.gr&quot;&gt;20th Panhellenic Conference on Informatics (PCI 2016)&lt;/a&gt;, which is taking place in Patras from 10-12 November 2016. In this conference we had the chance to present a full paper titled &amp;ldquo;A semi-automatic system for the consolidation of greek legislative texts&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/presentation_pci2016.jpg&quot; alt=&quot;Presenting the paper&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The camera ready version of the paper is available &lt;a href=&quot;https://dl.dropboxusercontent.com/u/104921582/A%20semi-automatic%20system%20for%20the%20consolidation%20of%20greek%20legislative%20texts-Camera_Ready.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, the presentation can be downloaded from &lt;a href=&quot;https://dl.dropboxusercontent.com/u/104921582/pci2016_presentation.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 Nov 2016 01:35:00 +0200</pubDate>
+        <link>http://www.openlaws.gr/publications/2016/11/12/PCI2016/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/publications/2016/11/12/PCI2016/</guid>
+      </item>
+    
+      <item>
         <title>Three legislative stages, three existing projects</title>
         <description>&lt;p&gt;OpenLawsGR is not the only Greek project that focuses on a stage of a legislative process. Two other efforts worth mentioning include &lt;a href=&quot;http://www.democracit.org/&quot;&gt;DemocracIT&lt;/a&gt; and &lt;a href=&quot;http://www.vouliwatch.gr/vouliwatch-in-english/&quot;&gt;VouliWatch&lt;/a&gt;.&lt;/p&gt;
 
@@ -185,27 +200,6 @@
         <pubDate>Sun, 30 Aug 2015 13:03:00 +0300</pubDate>
         <link>http://www.openlaws.gr/legislation/2015/08/30/Methodology/</link>
         <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/08/30/Methodology/</guid>
-      </item>
-    
-      <item>
-        <title>New Conference Publication!</title>
-        <description>&lt;p&gt;Our submission entitled &amp;ldquo;Automated Analysis of Greek Legislative Texts for Version Control: Limitations, Caveats and Challenges&amp;rdquo; was accepted as a short paper and will be presented at the &lt;a href=&quot;http://pci2015.teiath.gr&quot;&gt;19th Panhellenic Conference on Informatics (PCI 2015)&lt;/a&gt;, which will take place in Athens, 1-3 October 2015.&lt;/p&gt;
-
-&lt;p&gt;The paper presents our work so far and focuses on the problems that we are facing in this effort:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There are no official APIs or web services available, providing applications with access to law texts.&lt;/li&gt;
-&lt;li&gt;The provided law texts are not published in a format directly machine processable. PDF files need to get transformed to other formats (such as plain text) and this process could introduce errors, while the preservation of elements such as tables is difficult to get supported. Consequently, texts are not semantically annotated, while such a practice could take place before a law gets published at a low cost rather than performing the challenging task of automatic annotation at a later stage.&lt;/li&gt;
-&lt;li&gt;PDF files before 2004 contain scanned images of the printed laws. Some files also contain scanned images of texts in other languages (e.g. laws approving international agreements). These images are often of low quality, sometimes with skew positioning and contrast variations and their processing with OCR can be an error prone step. &lt;/li&gt;
-&lt;li&gt;Some PDF files are problematic. For example, all files between 2000 and 2005 have imperfect encoding information attached and their transformation to plain texts results in wrong characters. An extra step of character mapping for these files solves this problem. Other examples include a PDF file without content (there is only the phrase “No content was attributed to this issue”!) or a PDF file with wrong pattern text before the signature of the President of the Hellenic Republic (“The President of the Parliament” instead of “The President of the Hellenic Republic”).&lt;/li&gt;
-&lt;li&gt;In some cases the regular expressions that we use, although correct, are unable to match text patterns. The cause of this problem is the ambiguous mixing of look-alike Greek and Latin characters in the text. For example, the Greek word “ΝΟΜΟΣ” that means law and is used for distinguishing laws from other legislative types is found to contain characters encoded in the Latin character set in all positions (capital letters N, O, M look the same in both alphabets) apart from the last one in several cases.&lt;/li&gt;
-&lt;li&gt;Legislative texts before 1982 are written in a different form of the Greek language, called katharevousa that is polytonic (multi accent). As a result, processing and analysis for recent laws written in the current form of the Greek language are not applicable for the case of katharevousa and all effort needs to be repeated.&lt;/li&gt;
-&lt;li&gt;Legislative texts should be written according to the instructions that the Central Legislatorial Committee has issued. However, these instructions were only published in 1984, consequently before that date there was not a formally agreed way for the composition of laws, nevertheless it seems that there is a set of fixed phrases that are usually used. In any case, a careful review of legislative texts is needed to reveal all adopted patterns. Moreover, legislative drafting and linguistic rules are quite general and do not cover all possible cases, increasing the complexity of pattern matching. Finally, we have found several cases of laws where these instructions are not followed. For example, according to an instruction all law titles should appear in nominative case; however we have identified laws whose titles appear in genitive case.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 29 Jun 2015 19:37:00 +0300</pubDate>
-        <link>http://www.openlaws.gr/publications/2015/06/29/PCI2015/</link>
-        <guid isPermaLink="true">http://www.openlaws.gr/publications/2015/06/29/PCI2015/</guid>
       </item>
     
   </channel>
