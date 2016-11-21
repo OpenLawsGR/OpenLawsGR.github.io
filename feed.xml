@@ -7,6 +7,25 @@
     <atom:link href="http://www.openlaws.gr/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>OpenLawsGR at Hackerspace</title>
+        <description>&lt;p&gt;On Saturday, November 19, we had the chance to present our work during an &lt;a href=&quot;https://www.hackerspace.gr/wiki/%CE%A0%CE%B1%CF%81%CE%BF%CF%85%CF%83%CE%AF%CE%B1%CF%83%CE%B7_OpenLaws.gr&quot;&gt;event&lt;/a&gt; that took place at &lt;a href=&quot;https://www.hackerspace.gr/&quot;&gt;Hackerspace.gr&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/outside_HSPG.jpg&quot; alt=&quot;Outside HSPG&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The presentation (in Greek) can be downloaded from &lt;a href=&quot;https://dl.dropboxusercontent.com/u/104921582/hackerspace_presentation.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/presentation_HSPG.jpg&quot; alt=&quot;During the presentation&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;During the event we had an interesting discussion with the participants about legal documents parsing and analysis, problems of the Greek legislation system and the roadmap of our future implementation. After receiving some thoughtful remarks, we decided to split the project in two distinct subprojects that will be implemented separately. The first one is about the extraction of the structure of laws and their representation in machine readable format, while the second is about the identification and application of textual modifications. During the next days, we will create two new Github repositories, one for each subproject and we will open issues according to the &lt;a href=&quot;/roadmap&quot;&gt;roadmap&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Thank you guys for hosting and attending this event!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 22 Nov 2016 00:25:00 +0200</pubDate>
+        <link>http://www.openlaws.gr/presentation/2016/11/22/Hackerspace/</link>
+        <guid isPermaLink="true">http://www.openlaws.gr/presentation/2016/11/22/Hackerspace/</guid>
+      </item>
+    
+      <item>
         <title>PCI 2016</title>
         <description>&lt;p&gt;Today, it was the second day of the &lt;a href=&quot;http://pci2016.teiwest.gr&quot;&gt;20th Panhellenic Conference on Informatics (PCI 2016)&lt;/a&gt;, which is taking place in Patras from 10-12 November 2016. In this conference we had the chance to present a full paper titled &amp;ldquo;A semi-automatic system for the consolidation of greek legislative texts&amp;rdquo;.&lt;/p&gt;
 
@@ -184,26 +203,6 @@
         <pubDate>Sat, 03 Oct 2015 20:50:00 +0300</pubDate>
         <link>http://www.openlaws.gr/publications/2015/10/03/PCI2015/</link>
         <guid isPermaLink="true">http://www.openlaws.gr/publications/2015/10/03/PCI2015/</guid>
-      </item>
-    
-      <item>
-        <title>Methodology!</title>
-        <description>&lt;p&gt;In this post we present a general layout of the methodology that we are following:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Collection of Greek Legislation.&lt;/strong&gt; Initially, there is the need to collect all greek law documents that are published from the &lt;a href=&quot;http://www.et.gr&quot;&gt;National Printing Service (NPS)&lt;/a&gt; in the Government Gazzette. In a &lt;a href=&quot;http://www.openlaws.gr/legislation/code/2015/06/22/scrapying-greek-laws/&quot;&gt;previous post&lt;/a&gt; we have shown in detail how a crawler that undertakes this task can be implemented.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Transformation of Files to Plain Text Format.&lt;/strong&gt; Law documents are published as PDF files and as a result there is the need to transform them in a format that can easily be processed. We use the &amp;lsquo;pdftotext&amp;rsquo; open source utility for Linux to transform PDF files to plain text documents. Older PDF files (usually before 2004) contain scanned images and since OCR processing can be erroneous and these errors are detrimental to pattern matching, we decided to &lt;u&gt;exclude these files and limit the application of our system to newest laws&lt;/u&gt;. OCR training is out of the scope of this project, however it is an extension that we are willing to examine in the future.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Distinction of Different Legislative Text Types.&lt;/strong&gt; Each issue (PDF file) of the Government Gazzette may contain different types of legislative texts (e.g. laws, presidential decrees, ministerial decisions etc.). As our work currently focuses solely on laws, we need to distinguish laws from other legislative types residing in the same file. This is achievable by identifying the text patterns that flag the existence of a law and with the application of regular expressions one is able to isolate the text of each law.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Law Text Preprocessing.&lt;/strong&gt; Law text preprocessing is an important phase of the analysis cycle as it corrects several errors, either already present in the PDF files or produced during the previous steps. Such a process is expected to facilitate future analysis steps and natural language processing. In this phase, regular expressions can be used to remove irrelevant text that is transferred to the plain text files when transforming the PDF files: PDF page numbering, digital signature text, original file’s headers and footers, characters that are considered as garbage etc. Moreover, words divided by hyphens at the end of lines are fixed by concatenation. Finally, some abbreviations are temporarily substituted by the full words, as our first experimentations with the python suite &lt;a href=&quot;http://www.nltk.org/&quot;&gt;NLTK&lt;/a&gt;, which provides tools for natural language processing, showed that they sometimes cause problems, e.g. resulting in wrong sentence segmentation.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Structural Analysis.&lt;/strong&gt; In order to automatically perform transformations to a law&amp;rsquo;s content according to a modification, it is necessary to be aware of the structure of each law. Modifications refer to structural elements (such as articles, paragraphs, sub-paragraphs etc.) that a reader can easily search and identify within the text. However, a machine needs to analyze the text to recognize these elements. We are currently working on a module that parses each law text, performs structural analysis and identifies the structural elements. Laws’ structure follows distinct patterns, in the sense that laws should be written according to rules set by the Central Legislatorial Committee that explicitly define the structural parts of the text. Our module is based on regular expressions that match the patterns that occur according to these rules. After the analysis, we intend to store each law in XML format for internal representation purposed, which allows for a hierarchical layout of nodes, each one corresponding to a structural element.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Identification and Automatic Application of Modifications.&lt;/strong&gt; The last step of the methodology for the implementation of our system involves the identification of modifications in all text files and their recurrent application, in a proper chronological order, on the original law text they refer to, for the consolidation of all law versions. A modification may refer to an addition, suppression or substitution of a text portion. The verbs that are used to declare each case are usually the same or belong to a list of synonyms and can be used to detect possible modifications. Each candidate text portion should get further analyzed in order to detect if it follows a modification’s pattern (e.g. containing references to structural elements of another law) or it happens to appear within the law content as a simple verb occurrence. When a modification is identified and categorized as one of the three cases, a semantic and syntactic analysis will reveal which elements should change (e.g. a specific article of a law) and how (e.g. a specific text should be added at the beginning of that article). When all modifications are identified and analyzed, a script should traverse all laws and transform the appropriate laws’ texts according to the defined actions. The identification of the position of each modification’s referencing elements within the files should be straightforward due to the structural analysis presented in the previous step. When a new version of a law is produced, it will be committed and pushed to the version control repository.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Steps 1-4 are already successfully implemented. Step 5 is almost done and we will soon report on our respective work. Step 6 is still under design and normally we may need to reconsider some of our thoughts.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 30 Aug 2015 13:03:00 +0300</pubDate>
-        <link>http://www.openlaws.gr/legislation/2015/08/30/Methodology/</link>
-        <guid isPermaLink="true">http://www.openlaws.gr/legislation/2015/08/30/Methodology/</guid>
       </item>
     
   </channel>
